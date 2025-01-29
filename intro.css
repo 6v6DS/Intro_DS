@@ -1,10 +1,16 @@
 * {
-    font-family: "Do Hyeon", serif;
+    font-family: "Inter Tight", serif;
+    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
 
-
+:lang(ko){
+    font-family: "42dot Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
 
 h1 {
     font-size: 2.5em;
@@ -34,7 +40,14 @@ p {
     line-height: 1.375em;
 }
 
-/*Base*/
+.sec-home a,
+.sec-about a,
+.sec-hobby a,
+.sec-contact a {
+    text-decoration: none;
+    font-size: 0.7em;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -43,27 +56,41 @@ html,
 body {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
-/*Layout*/
+
 .wrapper {
     position: relative;
     width: 100%;
     height: 100%;
 
+    opacity: 0; 
+    transform: translateY(20px);
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .content {
     width: 60%;
 }
 
-/*Navigation*/
 nav {
     float: right;
     width: 5%;
     min-height: 100%;
-    background: #FFB0B0;
-    color: #fff;
+    background: #fff;
+    color: #2e2c2e;
     overflow: hidden;
     transition: width 0.5s ease;
 }
@@ -95,7 +122,8 @@ nav label:hover:before {
     opacity: 1;
 }
 
-/*Hidding mechanism*/
+
+
 input {
     display: none;
 }
@@ -116,7 +144,6 @@ input:checked~nav>label+.navigation {
     align-content: space-around;
 }
 
-/*close - "\f00d"*/
 .navigation {
     display: none;
     flex-direction: column;
@@ -127,32 +154,30 @@ input:checked~nav>label+.navigation {
     display: block;
     align-self: center;
     padding: 0.5em 0;
-    color: #fff;
+    color: #2e2c2e;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    text-shadow: 1px 1px 0 #666;
 }
 
 nav label,
 .navigation a {
-    border-bottom: 1px dashed #eda790;
+    border-bottom: 1px dashed #DDE6ED;
     transition: all 0.5s ease;
 }
 
 nav label:hover,
 .navigation a:hover {
-    background: #f59e9e;
+    background: #DDE6ED;
     text-shadow: none;
 }
 
 nav label:active,
 .navigation a:active {
-    background: #eda790;
+    background: #DDE6ED;
 }
 
-/*Sections*/
 section {
     position: absolute;
     top: 0;
@@ -174,28 +199,33 @@ section {
     margin: auto;
 }
 
-/*Home*/
 .sec-home {
     float: left;
     position: relative;
-    background: #fff5ee;
-    color: #e9967a;
+    background: rgb(255, 255, 255);
+    color: #2e2c2e;
     opacity: 1;
     overflow: auto;
+
+}
+
+.sec-home img{
+    object-fit: fill;
+    max-width: 300px;
+    /* width: 50%;  */
+    border-radius: 20%;
 }
 
 .sec-home a {
-    color: #eda790;
-    -webkit-text-decoration-style: dashed;
-    text-decoration-style: dashed;
+    color: #2e2c2e;
 }
 
 .sec-home a:hover {
-    color: #e58564;
+    color: #0071e3;
 }
 
 .sec-home a:active {
-    color: #eda790;
+    color: #0071e3;
 }
 
 .sec-home .content {
@@ -203,43 +233,39 @@ section {
     text-align: center;
 }
 
-/*About*/
 .sec-about {
-    background: #FFD09B;
-    color: #666;
+    background: #f5f5f7;
+    color: #2e2c2e;
     overflow: auto;
 }
 
 .sec-about .content {
     height: 55%;
-    text-align: center;
 }
 
-/*Portfolio*/
-.sec-portfolio {
-    background: #FFC6C6;
+.sec-hobby {
+    background: #f5f5f7;
     overflow: hidden;
     overflow: auto;
+    color: black;
 }
 
-.sec-portfolio .col-big {
+.sec-hobby .col-big {
     float: left;
     position: relative;
     width: 25%;
     height: 20vw;
 }
 
-.sec-portfolio img {
+.sec-hobby img {
     display: block;
     width: 50%;
     height: 50%;
 
 }
 
-
-/*Contact*/
 .sec-contact {
-    background: #FFEBD4;
+    background: rgb(255, 255, 255);
     overflow: auto;
 }
 
@@ -302,17 +328,17 @@ section {
 }
 
 .slide:nth-child(1) {
-    background-image: url(./image3.jpg);
+    background-image: url(./images/image3.jpg);
     animation-delay: 0;
 }
 
 .slide:nth-child(2) {
-    background-image: url(./image2.jpg);
+    background-image: url(./images/image2.jpg);
     animation-delay: -2.5s;
 }
 
 .slide:nth-child(3) {
-    background-image: url(./image1.jpg);
+    background-image: url(./images/image1.jpg);
     animation-delay: -5s;
 }
 
@@ -363,7 +389,33 @@ section {
 }
 
 .images img {
-    width: 30%; /* 한 줄에 3개 이미지 */
+    width: 30%;
     margin-bottom: 10px;
     object-fit: cover;
+}
+
+.bold-text {
+    font-weight: 700;
+}
+
+.image-container {
+    background-color: lightgray; 
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px; 
+}
+
+.sec-hobby h1 {
+    border-top: 2px solid #f5f5f7;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.bold-text > .highlight {
+    color: #0071e3;
+    font-weight: 700;
+}
+
+.highlight{
+    color: #0071e3;
 }
